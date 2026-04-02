@@ -6,3 +6,27 @@ terraform.tfvars
 
 .env
 looker-ecommerce-dataset/*.csv
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+.env
+.venvcd/
+.vscode/
+
+
+# --- dbt ---
+# ไฟล์ที่ dbt compile ออกมา (ไม่ต้องเอาขึ้น เพราะมันเปลี่ยนทุกครั้งที่รัน)
+target/
+dbt_modules/
+dbt_packages/
+
+
+# --- Runtime logs ---
+logs/
+*.log
+

@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: ecommerce_raw
+    database: ECOMMERCE_RAW
+    schema: LANDING
+    tables:
+      - name: users
+      - name: orders
+      - name: order_items
+      - name: products
+      - name: inventory_items
+      - name: events
+      - name: distribution_centers

@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: stg_users
+    description: "user data is cleaned"
+    columns:
+      - name: user_id
+        description: "Primary key of users"
+        tests:
+          - unique
+          - not_null
+
+      - name: email
+        description: "Email' user"
+        tests:
+          - not_null
+          # มึงสามารถเช็ค Format ได้ด้วยนะ แต่เอาพื้นฐานก่อน
+
+  - name: stg_orders
+    description: "orders data"
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      
+      - name: user_id
+        tests:
+          - not_null
+          - relationships: # เช็คว่า user_id ใน orders ต้องมีตัวตนจริงใน stg_users
+              to: ref('stg_users')
+              field: user_id
+
+  - name: stg_order_items
+    columns:
+      - name: order_item_id
+        tests:
+          - unique
+      - name: status
+        tests:
+          - accepted_values: # เช็คว่ามีค่าแปลกปลอมหลุดมาไหม
+              values: ['Shipped', 'Complete', 'Returned', 'Cancelled', 'Processing', 'Returned']
