@@ -1,1 +1,96 @@
- -V:3.12          C:\Users\User\AppData\Local\Programs\Python\Python312\python.exe
+========================================================================
+ชื่อไฟล์: distribution_centers.csv
+schema:
+  - id: integer
+  - name: string
+  - latitude: float
+  - longitude: float
+------------------------------------------------------------------------
+ชื่อไฟล์: events.csv
+schema:
+  - id: integer
+  - user_id: float
+  - sequence_number: integer
+  - session_id: string
+  - created_at: string
+  - ip_address: string
+  - city: string
+  - state: string
+  - postal_code: string
+  - browser: string
+  - traffic_source: string
+  - uri: string
+  - event_type: string
+------------------------------------------------------------------------
+ชื่อไฟล์: inventory_items.csv
+schema:
+  - id: integer
+  - product_id: integer
+  - created_at: string
+  - sold_at: string
+  - cost: float
+  - product_category: string
+  - product_name: string
+  - product_brand: string
+  - product_retail_price: float
+  - product_department: string
+  - product_sku: string
+  - product_distribution_center_id: integer
+------------------------------------------------------------------------
+ชื่อไฟล์: order_items.csv
+schema:
+  - id: integer
+  - order_id: integer
+  - user_id: integer
+  - product_id: integer
+  - inventory_item_id: integer
+  - status: string
+  - created_at: string
+  - shipped_at: string
+  - delivered_at: string
+  - returned_at: string
+  - sale_price: float
+------------------------------------------------------------------------
+ชื่อไฟล์: orders.csv
+schema:
+  - order_id: integer
+  - user_id: integer
+  - status: string
+  - gender: string
+  - created_at: string
+  - returned_at: null
+  - shipped_at: null
+  - delivered_at: null
+  - num_of_item: integer
+------------------------------------------------------------------------
+ชื่อไฟล์: products.csv
+schema:
+  - id: integer
+  - cost: float
+  - category: string
+  - name: string
+  - brand: string
+  - retail_price: float
+  - department: string
+  - sku: string
+  - distribution_center_id: integer
+------------------------------------------------------------------------
+ชื่อไฟล์: users.csv
+schema:
+  - id: integer
+  - first_name: string
+  - last_name: string
+  - email: string
+  - age: integer
+  - gender: string
+  - state: string
+  - street_address: string
+  - postal_code: string
+  - city: string
+  - country: string
+  - latitude: float
+  - longitude: float
+  - traffic_source: string
+  - created_at: string
+------------------------------------------------------------------------
+

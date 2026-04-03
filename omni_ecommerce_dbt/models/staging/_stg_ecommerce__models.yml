@@ -9,12 +9,10 @@ models:
         tests:
           - unique
           - not_null
-
       - name: email
-        description: "Email' user"
+        description: "Email user"
         tests:
           - not_null
-          # มึงสามารถเช็ค Format ได้ด้วยนะ แต่เอาพื้นฐานก่อน
 
   - name: stg_orders
     description: "orders data"
@@ -23,20 +21,56 @@ models:
         tests:
           - unique
           - not_null
-      
       - name: user_id
         tests:
           - not_null
-          - relationships: # เช็คว่า user_id ใน orders ต้องมีตัวตนจริงใน stg_users
-              to: ref('stg_users')
-              field: user_id
+          - relationships:
+              arguments:
+                to: ref('stg_users')
+                field: user_id
 
   - name: stg_order_items
     columns:
       - name: order_item_id
         tests:
           - unique
-      - name: status
+          - not_null
+      - name: item_status
         tests:
-          - accepted_values: # เช็คว่ามีค่าแปลกปลอมหลุดมาไหม
-              values: ['Shipped', 'Complete', 'Returned', 'Cancelled', 'Processing', 'Returned']
+          - accepted_values:
+              arguments:
+                values: ['Shipped', 'Complete', 'Returned', 'Cancelled', 'Processing']
+
+  - name: stg_products
+    columns:
+      - name: product_id
+        tests:
+          - unique
+          - not_null
+      - name: dc_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_distribution_centers')
+                field: dc_id
+
+  - name: stg_inventory_items
+    columns:
+      - name: inventory_item_id
+        tests:
+          - unique
+          - not_null
+      - name: product_id
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_products')
+                field: product_id
+
+  - name: stg_distribution_centers
+    columns:
+      - name: dc_id
+        tests:
+          - unique
+          - not_null

@@ -17,7 +17,7 @@ user_value as (
         sum(sale_price) as lifetime_revenue, -- นี่แหละคือตัวแปรหลักของ CLV
         avg(sale_price) as average_order_value
     from order_items
-    where status not in ('Cancelled', 'Returned') -- คิดเฉพาะยอดที่ขายได้จริง
+    where item_status not in ('Cancelled', 'Returned') -- คิดเฉพาะยอดที่ขายได้จริง
     group by 1
 ),
 

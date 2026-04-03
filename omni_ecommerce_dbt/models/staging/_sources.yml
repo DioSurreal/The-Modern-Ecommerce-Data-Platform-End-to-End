@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: bronze
+    database: ECOMMERCE_RAW
+    schema: BRONZE
+    tables:
+      - name: raw_users
+      - name: raw_orders
+      - name: raw_order_items
+      - name: raw_products
+      - name: raw_inventory_items
+      - name: raw_distribution_centers
+  - name: streaming  
+    database: ECOMMERCE_RAW
+    schema: STREAMING 
+    tables:
+      - name: raw_clickstream

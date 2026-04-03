@@ -4,3 +4,5 @@ WORKDIR /app
 
 RUN pip install --no-cache-dir boto3 python-dotenv 
    /dbt-snowflake
+   /pip install boto3 faker
+   /pip install pandas

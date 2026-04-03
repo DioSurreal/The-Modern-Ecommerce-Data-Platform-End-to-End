@@ -7,8 +7,8 @@ with order_items as (
 daily_metrics as (
     select
         date_trunc('day', created_at_ts) as report_date,
-        sum(case when status not in ('Cancelled', 'Returned') then sale_price else 0 end) as gross_revenue,
-        sum(case when status = 'Returned' then sale_price else 0 end) as returned_value,
+        sum(case when item_status not in ('Cancelled', 'Returned') then sale_price else 0 end) as gross_revenue,
+        sum(case when item_status = 'Returned' then sale_price else 0 end) as returned_value,
         count(distinct order_id) as total_orders
     from order_items
     group by 1

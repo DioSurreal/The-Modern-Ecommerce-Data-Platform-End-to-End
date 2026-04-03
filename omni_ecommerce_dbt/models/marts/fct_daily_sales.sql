@@ -9,9 +9,9 @@ daily_summary as (
         date_trunc('day', created_at_ts) as sales_date,
         count(distinct order_id) as total_orders,
         count(distinct user_id) as unique_customers,
-        sum(num_of_item) as total_items_sold,
+        sum(item_count) as total_items_sold,
         -- สมมติเรามีสถานะ 'Cancelled' หรือ 'Returned' เราจะกรองออกที่นี่ได้
-        count(case when status = 'Returned' then 1 end) as total_returns
+        count(case when order_status = 'Returned' then 1 end) as total_returns
     from orders
     group by 1
 )
