@@ -1,0 +1,13 @@
+omni_ecommerce_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: 'EZHYYIM-YD05486'
+      user: 'DIOSURREAL'
+      password: 'Forsnowflake24'
+      role: 'ACCOUNTADMIN'
+      warehouse: 'COMPUTE_WH'
+      database: 'ECOMMERCE_RAW'
+      schema: 'BRONZE'
+      threads: 4

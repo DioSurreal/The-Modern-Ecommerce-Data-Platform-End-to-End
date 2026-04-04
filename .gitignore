@@ -6,6 +6,8 @@ terraform.tfvars
 
 .env
 looker-ecommerce-dataset/*.csv
+data/landing/
+event_maker/data/landing/
 # --- Python ---
 __pycache__/
 *.py[cod]
@@ -17,7 +19,7 @@ env/
 .env
 .venvcd/
 .vscode/
-
+a.txt
 
 # --- dbt ---
 # ไฟล์ที่ dbt compile ออกมา (ไม่ต้องเอาขึ้น เพราะมันเปลี่ยนทุกครั้งที่รัน)
@@ -30,3 +32,9 @@ dbt_packages/
 logs/
 *.log
 
+
+# Airflow System Files
+plugins/
+airflow.db
+webserver_config.py
+standalone_admin_password.txt
