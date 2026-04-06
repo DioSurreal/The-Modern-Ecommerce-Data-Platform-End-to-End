@@ -10,7 +10,6 @@ daily_summary as (
         count(distinct order_id) as total_orders,
         count(distinct user_id) as unique_customers,
         sum(item_count) as total_items_sold,
-        -- สมมติเรามีสถานะ 'Cancelled' หรือ 'Returned' เราจะกรองออกที่นี่ได้
         count(case when order_status = 'Returned' then 1 end) as total_returns
     from orders
     group by 1
@@ -18,7 +17,6 @@ daily_summary as (
 
 select 
     *,
-    -- คำนวณ Growth แบบ Senior (ยอดขายวันนี้เทียบกับเมื่อวาน)
     lag(total_orders) over (order by sales_date) as previous_day_orders
 from daily_summary
 order by sales_date desc

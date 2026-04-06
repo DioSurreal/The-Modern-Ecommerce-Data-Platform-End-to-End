@@ -5,7 +5,7 @@ with sessionized_events as (
 ),
 
 customers as (
-    select * from {{ ref('stg_users') }} -- จากโปรเจกต์ F2 เดิมของมึง
+    select * from {{ ref('stg_users') }} 
 )
 
 select
@@ -19,4 +19,4 @@ select
     c.first_name || ' ' || c.last_name as customer_name,
     c.email
 from sessionized_events e
-left join customers c on e.user_id = cast(c.user_id as string) -- Join ถ้ามี user_id
+left join customers c on e.user_id = cast(c.user_id as string) 

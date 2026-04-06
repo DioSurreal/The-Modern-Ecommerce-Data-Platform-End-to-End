@@ -4,7 +4,6 @@ DESCRIBE VIEW ECOMMERCE_RAW.DBT_ECOMMERCE.STG_ORDERS;
 
 
 
--- เช็คว่ามี user_id ในตาราง orders ที่ตรงกับ id ในตาราง users จริงไหม
 SELECT count(*) 
 FROM ECOMMERCE_RAW.LANDING.ORDERS o
 JOIN ECOMMERCE_RAW.LANDING.USERS u ON o.user_id = u.id;

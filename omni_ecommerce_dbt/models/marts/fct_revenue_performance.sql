@@ -16,9 +16,7 @@ daily_metrics as (
 
 select
     *,
-    -- คำนวณ Profit Margin แบบสมมติ (Gross Rev - Returned)
     (gross_revenue - returned_value) as net_revenue,
-    -- ตรวจสอบสุขภาพธุรกิจ (Return Rate %)
     case 
         when gross_revenue > 0 then (returned_value / gross_revenue) * 100 
         else 0 

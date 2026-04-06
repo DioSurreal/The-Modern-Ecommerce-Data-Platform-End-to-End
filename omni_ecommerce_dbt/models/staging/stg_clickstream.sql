@@ -1,7 +1,6 @@
 
 -- แก้บรรทัดนี้
 with raw_data as (
-    -- ชี้ไปที่ตารางที่มีคอลัมน์ event_data จริงๆ (ที่เราเซต Snowpipe ไว้)
     select * from {{ source('streaming', 'raw_clickstream') }} 
 ),
 

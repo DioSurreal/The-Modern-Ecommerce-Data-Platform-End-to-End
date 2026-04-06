@@ -14,10 +14,10 @@ user_value as (
         min(created_at_ts) as first_order_ts,
         max(created_at_ts) as last_order_ts,
         count(distinct order_id) as total_orders,
-        sum(sale_price) as lifetime_revenue, -- นี่แหละคือตัวแปรหลักของ CLV
+        sum(sale_price) as lifetime_revenue,
         avg(sale_price) as average_order_value
     from order_items
-    where item_status not in ('Cancelled', 'Returned') -- คิดเฉพาะยอดที่ขายได้จริง
+    where item_status not in ('Cancelled', 'Returned') 
     group by 1
 ),
 
@@ -35,7 +35,6 @@ final as (
         coalesce(v.lifetime_revenue, 0) as lifetime_revenue,
         coalesce(v.average_order_value, 0) as average_order_value,
         
-        -- Business Logic: แบ่งเกรดลูกค้า (Customer Segmentation)
         case 
             when v.lifetime_revenue > 500 then 'High Value'
             when v.lifetime_revenue between 100 and 500 then 'Medium Value'
